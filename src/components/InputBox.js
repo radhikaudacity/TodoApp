@@ -1,24 +1,25 @@
+import { rndString } from '@laufire/utils/random';
 import React, { useState } from 'react';
 
 const InputBox = ({ addTodos }) => {
-	const [inputVal, setInputValue] = useState('');
+	const [input, setInput] = useState({ text: '' });
 
 	const handleChange = (e) => {
 		const { value } = e.target;
 
-		setInputValue(value);
+		setInput({ id: rndString(), text: value, checked: false });
 	};
 
 	const handleAddClick = () => {
-		addTodos(inputVal);
-		setInputValue('');
+		addTodos(input);
+		setInput({ text: '' });
 	};
 
 	return (
-		<div><input value={ inputVal } onChange={ handleChange } name="todo"/>
+		<div><input value={ input.text } onChange={ handleChange } name="todo"/>
 			<button
 				onClick={ handleAddClick }
-				disabled={ inputVal === '' }
+				disabled={ input.text === '' }
 			>Add item</button>
 			<div/></div>
 	);

@@ -8,8 +8,28 @@
 		list-style: none;
 		text-align: left
 	}
+	li{
+		display: flex;
+		justify-content:space-between;
+		background-color: rgb(232, 229, 229);
+		padding: 1em;
+		margin: 2px;
+
+	}
+	.list-display{
+		display: flex;
+
+	}
+	.list-display:first-child{
+		flex:1 1 auto
+
+	}
+	.list-display:last-child{
+		flex:2 1 auto
+
+	}
 	.container{
-		max-width: 50%;
+		max-width: 30%;
 		margin: 0 auto;
 	}
 

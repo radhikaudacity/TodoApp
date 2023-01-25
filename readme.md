@@ -19,7 +19,7 @@ l## Requirement
 
 2. User should be able to delete todo individually
   * each todo should have a delete button on the right of it
-	* on clicking it the todo should get delete
+	* on clicking it the todo should get deleted
 
 3. There should be clickable checkbox to mark it as complete
 	* Add a check box on the left of each todo
