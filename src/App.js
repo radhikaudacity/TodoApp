@@ -5,6 +5,7 @@ import InputBox from './components/InputBox';
 import ListTodos from './components/ListTodos';
 
 import './App.scss';
+import ClearCompleted from './components/ClearCompleted';
 
 const App = (context) => {
 	const [state, setState] = useState({ todos: [], input: '' });
@@ -14,6 +15,7 @@ const App = (context) => {
 			<Header/>
 			<InputBox { ...{ ...context, state, setState } }/>
 			<ListTodos { ...{ ...context, state, setState } }/>
+			<ClearCompleted { ...{ ...context, state, setState } }/>
 		</div>
 	</div>
 	;
