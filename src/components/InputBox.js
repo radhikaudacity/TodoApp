@@ -3,7 +3,7 @@ import AddTodoButton from './AddTodoButton';
 import UpdateTodoButton from './UpdateTodoButton';
 
 const InputBox = (context) => {
-	const { state, setState, displayAdd } = context;
+	const { state, setState } = context;
 
 	return (
 		<div>
@@ -12,9 +12,11 @@ const InputBox = (context) => {
 				onChange={ (event) =>
 					setState({ ...state, input: event.target.value }) }
 			/>
-			<AddTodoButton { ...context }/>
-			<UpdateTodoButton{ ...context }/>
-			<div/>
+			{
+				state.displayAdd
+					?	<AddTodoButton { ...context }/>
+					: <UpdateTodoButton{ ...context }/>
+			}
 		</div>
 	);
 };

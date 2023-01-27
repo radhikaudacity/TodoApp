@@ -1,13 +1,18 @@
 import React from 'react';
-import TodoManger from '../services/TodoManger';
+import TodoManager from '../services/TodoManager';
 
 const UpdateTodoButton = (context) => {
 	const { state, setState } = context;
 
 	return (
 		<button
-			onClick={ () => TodoManger.updateTodo(context) }
-		>Update Todo Item
+			onClick={ () => setState({
+				...state,
+				todos: TodoManager.updateTodo(context),
+				input: '',
+				displayAdd: true,
+			}) }
+		>	Update Todo Item
 		</button>);
 };
 

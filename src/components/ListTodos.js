@@ -1,16 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import React from 'react';
-import TodoManager from '../services/TodoManger';
-import InputBox from './InputBox';
-
-const displayClickedInInput = (context) => {
-	const { state, setState, data: { todo }} = context;
-
-	setState({ ...state, input: todo.text,
-		displayAdd: false, toBeUpdatedId: todo.id });
-
-	return <InputBox { ...context }/>;
-};
+import TodoManager from '../services/TodoManager';
 
 const ListTodos = (context) => {
 	const { state, setState } = context;
@@ -30,14 +20,18 @@ const ListTodos = (context) => {
 					checked={ todo.checked }
 				/>
 				<span onClick={
-					() => displayClickedInInput({ ...context, data: { todo }})
+					() => setState({ ...state, input: todo.text,
+						displayAdd: false, toBeUpdatedId: todo.id })
 				}
 				>{todo.text}</span>
 			</div>
 			<div>
 				<button
 					id={ index }
-					onClick={ () => TodoManager.handleDelete(context, todo.id) }
+					onClick={ () => setState({
+						...state,
+						todos: TodoManager.handleDelete(context, todo.id),
+					}) }
 				>Delete</button>
 			</div>
 		</li>)}</ul>;

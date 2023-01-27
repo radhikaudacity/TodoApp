@@ -1,6 +1,6 @@
 import { rndString } from '@laufire/utils/random';
 import React from 'react';
-import TodoManger from '../services/TodoManger';
+import TodoManager from '../services/TodoManager';
 
 const AddTodoButton = (context) => {
 	const { state, setState } = context;
@@ -19,7 +19,7 @@ const AddTodoButton = (context) => {
 				input: '',
 
 			}) }
-			disabled={ TodoManger.isInputEmpty(context) }
+			disabled={ TodoManager.isInputEmpty(context) }
 		>Add Todo Item
 		</button>);
 };
