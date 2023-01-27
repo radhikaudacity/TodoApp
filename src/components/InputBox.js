@@ -1,33 +1,19 @@
-import { rndString } from '@laufire/utils/random';
 import React from 'react';
-
-const handleAddClick = (event, { state, setState }) =>
-	setState({
-		...state,
-		todos: [...state.todos,
-			{
-				text: state.input,
-				checked: false, id: rndString(),
-
-			}],
-		input: '',
-	});
-const handleChange = (event, { state, setState }) =>
-	setState({ ...state, input: event.target.value });
+import AddTodoButton from './AddTodoButton';
+import UpdateTodoButton from './UpdateTodoButton';
 
 const InputBox = (context) => {
-	const { state, setState } = context;
+	const { state, setState, displayAdd } = context;
 
 	return (
 		<div>
 			<input
 				value={ state.input }
-				onChange={ (event) => handleChange(event, context) }
+				onChange={ (event) =>
+					setState({ ...state, input: event.target.value }) }
 			/>
-			<button
-				onClick={ (event) => handleAddClick(event, context) }
-				disabled={ state.input === '' }
-			>Add item</button>
+			<AddTodoButton { ...context }/>
+			<UpdateTodoButton{ ...context }/>
 			<div/>
 		</div>
 	);

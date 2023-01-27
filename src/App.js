@@ -9,15 +9,19 @@ import ClearCompleted from './components/ClearCompleted';
 import SelectAll from './components/SelectAll';
 
 const App = (context) => {
-	const [state, setState] = useState({ todos: [], input: '' });
+	const [state, setState] = useState({ todos: [],
+		input: '', displayAdd: true, toBeUpdatedId: '' });
+
+	const extendedContext = { ...context, state, setState };
 
 	return <div className="App">
 		<div className="container">
 			<Header/>
-			<InputBox { ...{ ...context, state, setState } }/>
-			<ListTodos { ...{ ...context, state, setState } }/>
-			<ClearCompleted { ...{ ...context, state, setState } }/>
-			<SelectAll { ...{ ...context, state, setState } }/>
+			<InputBox { ...extendedContext }/>
+			<SelectAll { ...extendedContext }/>
+			<ListTodos { ...extendedContext }/>
+			<ClearCompleted { ...extendedContext }/>
+
 		</div>
 	</div>
 	;

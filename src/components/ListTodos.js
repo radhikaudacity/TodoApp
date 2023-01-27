@@ -1,22 +1,15 @@
 /* eslint-disable max-lines-per-function */
 import React from 'react';
+import TodoManager from '../services/TodoManger';
+import InputBox from './InputBox';
 
-const handleChange = (
-	{ state, setState }, event, todo
-) =>
-	setState({
-		...state,
-		todos: state.todos.map((item) => (item.id === todo.id
-			? { ...item, checked: event.target.checked }
-			: item)),
+const displayClickedInInput = (context) => {
+	const { state, setState, data: { todo }} = context;
 
-	});
+	setState({ ...state, input: todo.text,
+		displayAdd: false, toBeUpdatedId: todo.id });
 
-const handleDelete = ({ state, setState }, id) => {
-	setState({
-		...state,
-		todos: [...state.todos.filter((todo) => todo.id !== id)],
-	});
+	return <InputBox { ...context }/>;
 };
 
 const ListTodos = (context) => {
@@ -27,17 +20,24 @@ const ListTodos = (context) => {
 		<li key={ index }>
 			<div 	className="list-display">
 				<input
-					onChange={ (event) => handleChange(
-						context, event, todo
-					) }
+					onChange={
+						({ target: { checked }}) =>
+							setState({ ...state,
+								todos: TodoManager.toggleCompleted({ ...context,
+									data: { checked, todo }}) })
+					}
 					type="checkbox"
 					checked={ todo.checked }
-				/>{todo.text}
+				/>
+				<span onClick={
+					() => displayClickedInInput({ ...context, data: { todo }})
+				}
+				>{todo.text}</span>
 			</div>
 			<div>
 				<button
 					id={ index }
-					onClick={ () => handleDelete(context, todo.id) }
+					onClick={ () => TodoManager.handleDelete(context, todo.id) }
 				>Delete</button>
 			</div>
 		</li>)}</ul>;
