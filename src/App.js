@@ -6,6 +6,7 @@ import ListTodos from './components/ListTodos';
 
 import './App.scss';
 import ClearCompleted from './components/ClearCompleted';
+import SelectAll from './components/SelectAll';
 
 const App = (context) => {
 	const [state, setState] = useState({ todos: [], input: '' });
@@ -16,6 +17,7 @@ const App = (context) => {
 			<InputBox { ...{ ...context, state, setState } }/>
 			<ListTodos { ...{ ...context, state, setState } }/>
 			<ClearCompleted { ...{ ...context, state, setState } }/>
+			<SelectAll { ...{ ...context, state, setState } }/>
 		</div>
 	</div>
 	;

@@ -6,10 +6,16 @@ const handleClick = ({ state, setState }) =>
 		todos: state.todos.filter((todo) => !todo.checked),
 	});
 
-const ClearCompleted = (context) => <div>
-	<button
-		onClick={ () => handleClick(context) }
-	>Clear Completed Todos</button>
-</div>;
+const ClearCompleted = (context) => {
+	const { state } = context;
+
+	return state.todos.find((todo) => todo.checked)
+		? <div>
+			<button
+				onClick={ () => handleClick(context) }
+			>Clear Completed Todos</button>
+		</div>
+		: <div/>;
+};
 
 export default ClearCompleted;

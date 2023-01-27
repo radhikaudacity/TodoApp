@@ -8,6 +8,7 @@ const handleAddClick = (event, { state, setState }) =>
 			{
 				text: state.input,
 				checked: false, id: rndString(),
+
 			}],
 		input: '',
 	});
