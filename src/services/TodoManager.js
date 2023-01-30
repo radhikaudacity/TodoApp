@@ -31,9 +31,9 @@ const updateTodo = ({ state }) =>
 const clearTodos = ({ state }) =>
 	state.todos.filter((todo) => !todo.checked);
 
-const toggleSelect = ({ state }, checked) =>
+const toggleSelect = ({ state, data }) =>
 	state.todos.map((todo) =>
-		({ ...todo, checked }));
+		({ ...todo, checked: data }));
 
 const TodoManager = { isInputEmpty, addTodo,
 	deleteTodo, toggleCompleted, updateTodo,

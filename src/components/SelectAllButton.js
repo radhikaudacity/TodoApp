@@ -14,7 +14,8 @@ const SelectAllButton = (context) => {
 				onChange={ ({ target: { checked }}) =>
 					setState({
 						...state,
-						todos: TodoManager.toggleSelect(context, checked),
+						todos:
+						TodoManager.toggleSelect({ ...context, data: checked }),
 					}) }
 			/>Select All Todos
 		</div>

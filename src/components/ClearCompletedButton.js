@@ -3,14 +3,14 @@ import TodoManager from '../services/TodoManager';
 
 const ClearCompletedButton = (context) => {
 	const { state, setState } = context;
-	const clearTodos = TodoManager.clearTodos(context);
+	const todos = TodoManager.clearTodos(context);
 
-	return state.todos.find((todo) => todo.checked)
+	return state.todos.some((todo) => todo.checked)
 		? <div>
 			<button
 				onClick={ () => setState({
 					...state,
-					todos: clearTodos,
+					todos,
 				}) }
 			>Clear Completed Todos</button>
 		</div>

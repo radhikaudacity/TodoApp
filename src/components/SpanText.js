@@ -7,7 +7,6 @@ const SpanText = (context) => {
 		<span onClick={
 			() => setState({ ...state,
 				input: data.text,
-				displayAdd: false,
 				toBeUpdatedId: data.id })
 		}
 		>{data.text}</span>

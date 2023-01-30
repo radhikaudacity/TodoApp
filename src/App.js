@@ -8,7 +8,7 @@ import './App.scss';
 
 const App = (context) => {
 	const [state, setState] = useState({ todos: [],
-		input: '', toBeUpdatedId: '', selectAllSelected: false });
+		input: '', toBeUpdatedId: '' });
 
 	const extendedContext = { ...context, state, setState };
 
