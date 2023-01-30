@@ -3,14 +3,15 @@ import TodoManager from '../services/TodoManager';
 
 const UpdateTodoButton = (context) => {
 	const { state, setState } = context;
+	const updatedTodos = TodoManager.updateTodo(context);
 
 	return (
 		<button
 			onClick={ () => setState({
 				...state,
-				todos: TodoManager.updateTodo(context),
+				todos: updatedTodos,
 				input: '',
-				displayAdd: true,
+				toBeUpdatedId: '',
 			}) }
 		>	Update Todo Item
 		</button>);

@@ -1,26 +1,24 @@
-/* eslint-disable max-lines-per-function */
 import { React, useState } from 'react';
 import Header from './components/Header';
-import InputBox from './components/InputBox';
+import Inputs from './components/Inputs';
 import ListTodos from './components/ListTodos';
-
+import ClearCompletedButton from './components/ClearCompletedButton';
+import SelectAllButton from './components/SelectAllButton';
 import './App.scss';
-import ClearCompleted from './components/ClearCompleted';
-import SelectAll from './components/SelectAll';
 
 const App = (context) => {
 	const [state, setState] = useState({ todos: [],
-		input: '', displayAdd: true, toBeUpdatedId: '' });
+		input: '', toBeUpdatedId: '', selectAllSelected: false });
 
 	const extendedContext = { ...context, state, setState };
 
 	return <div className="App">
 		<div className="container">
 			<Header/>
-			<InputBox { ...extendedContext }/>
-			<SelectAll { ...extendedContext }/>
+			<Inputs { ...extendedContext }/>
+			<SelectAllButton { ...extendedContext }/>
 			<ListTodos { ...extendedContext }/>
-			<ClearCompleted { ...extendedContext }/>
+			<ClearCompletedButton { ...extendedContext }/>
 
 		</div>
 	</div>
