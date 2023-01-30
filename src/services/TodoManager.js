@@ -1,3 +1,4 @@
+import { peek } from '@laufire/utils/debug';
 import { rndString } from '@laufire/utils/random';
 
 const isInputEmpty = ({ state: { input }}) => input === '';
@@ -20,11 +21,13 @@ const toggleCompleted = ({ state, data: { checked, todo }}) =>
 		: item));
 
 const isAllSelected = ({ state }) =>
-	state.todos.every((item) => item.checked);
+	state.todos.every((todo) => todo.checked);
+
+const isAnySelected = ({ state }) =>
+	state.todos.some((todo) => todo.checked);
 
 const updateTodo = ({ state }) =>
-
-	state.todos.map((item) => (item.id === state.toBeUpdatedId
+	state.todos.map((item) => (item.id === state.updatedTodo.id
 		? { ...item, text: state.input }
 		: item));
 
@@ -35,8 +38,15 @@ const toggleSelect = ({ state, data }) =>
 	state.todos.map((todo) =>
 		({ ...todo, checked: data }));
 
+const	getMode = ({ state }) =>	(state.updatedTodo ? 'update' : 'add');
+
+const radioCheck = ({ state, data }) => {
+	peek(data.checked);
+};
+
 const TodoManager = { isInputEmpty, addTodo,
 	deleteTodo, toggleCompleted, updateTodo,
-	clearTodos, toggleSelect, isAllSelected };
+	clearTodos, toggleSelect, isAllSelected,
+	isAnySelected, getMode, radioCheck };
 
 export default TodoManager;

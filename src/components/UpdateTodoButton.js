@@ -11,7 +11,7 @@ const UpdateTodoButton = (context) => {
 				...state,
 				todos: updatedTodos,
 				input: '',
-				toBeUpdatedId: '',
+				updatedTodo: null,
 			}) }
 		>	Update Todo Item
 		</button>);

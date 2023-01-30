@@ -5,16 +5,15 @@ const ClearCompletedButton = (context) => {
 	const { state, setState } = context;
 	const todos = TodoManager.clearTodos(context);
 
-	return state.todos.some((todo) => todo.checked)
-		? <div>
+	return TodoManager.isAnySelected(context)
+		&& <div>
 			<button
 				onClick={ () => setState({
 					...state,
 					todos,
 				}) }
 			>Clear Completed Todos</button>
-		</div>
-		: <div/>;
+		</div>;
 };
 
 export default ClearCompletedButton;
