@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import Header from './components/Header';
 import Inputs from './components/Inputs';
 import ListTodos from './components/ListTodos';
+import ListActionButtons from './components//ListActionButtons';
 import ClearCompletedButton from './components/ClearCompletedButton';
 import SelectAllButton from './components/SelectAllButton';
 import './App.scss';
@@ -16,6 +17,7 @@ const App = (context) => {
 		<div className="container">
 			<Header/>
 			<Inputs { ...extendedContext }/>
+			<ListActionButtons/>
 			<SelectAllButton { ...extendedContext }/>
 			<ListTodos { ...extendedContext }/>
 			<ClearCompletedButton { ...extendedContext }/>

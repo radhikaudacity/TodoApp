@@ -1,8 +1,12 @@
+import { peek } from '@laufire/utils/debug';
 import React from 'react';
 import TodoManager from '../services/TodoManager';
 
-const RadioButton = ({ id, value }, context) =>
-	<span>
+const RadioButton = (data, context) => {
+	const { id, value } = data;
+
+	peek({ ...id });
+	return <span>
 		<input
 			id={ id }
 			value={ value }
@@ -11,7 +15,8 @@ const RadioButton = ({ id, value }, context) =>
 			onChange={ ({ target }) =>
 				TodoManager.radioCheck({ ...context, target }) }
 		/>
-		<label htmlFor="all">All</label>
+		<label htmlFor={ id }>{value}</label>
 	</span>;
+};
 
 export default RadioButton;
